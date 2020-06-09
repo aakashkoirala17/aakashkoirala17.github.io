@@ -17,9 +17,16 @@ body{
     text-align: center;
 }
 
+.twitter{
+
+    text-align: center;
+}
+
 </style>
 
 <div class="main">
+
+
 
 
 
@@ -32,9 +39,18 @@ body{
 
 </div>
 
+<div class="twitter">
+    <a class="twitter-timeline" data-width="300" data-height="500" data-theme="dark" href="https://twitter.com/44_k45h?ref_src=twsrc%5Etfw">Tweets by 44_k45h</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
 <script>
 
     fetch("https://api.github.com/users/aakashkoirala17")
+    .then(response => response.json())
+    .then(function(data)
+    {
+        console.log(data)
+    })
 
 
 
