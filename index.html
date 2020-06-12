@@ -1,55 +1,53 @@
-<html>
-<body>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style> img{
-    width:300px;
-    height:300px;
-    object-fit:cover;
-    border-radius:50%;
-    text-align: center;
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+  <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-}
 
-body{
-    background-color: lightblue;
-}
-.main{
-    text-align: center;
-}
 
-.twitter{
+        <div class="main">
+            <img id="profileImage">
+            <h2 id="profileName">  </h2>
+            <h5 id="bio"></h5>
+            <h3 id="followersinfo"></h3>
+            <p>
+                <a id="githublink"> GithubLink </a> <br>
 
-    text-align: center;
-}
 
-</style>
-
-<div class="main">
+                <a id="html"> Lists </a>
+            </p>
 
 
 
 
-
-    <img
-            src="https://scontent.fktm1-2.fna.fbcdn.net/v/t1.0-9/71871369_158121018628147_5503471741910908928_o.jpg?_nc_cat=111&_nc_sid=09cbfe&_nc_ohc=JV0S5vJuIKUAX-8teaW&_nc_ht=scontent.fktm1-2.fna&oh=d968d624261ca4740b9ad9bc62022219&oe=5F00E017"
-
-    >
-    <h2>  Aakash Koirala</h2>
-    <p id="bio"> </p>
-
-</div>
-
-<div class="twitter">
-    <a class="twitter-timeline" data-width="300" data-height="500" data-theme="dark" href="https://twitter.com/44_k45h?ref_src=twsrc%5Etfw">Tweets by 44_k45h</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
+            <a class="twitter-timeline" data-width="300" data-height="500" data-theme="dark" href="https://twitter.com/44_k45h?ref_src=twsrc%5Etfw">Tweets by 44_k45h</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
 
 <script>
 
     fetch("https://api.github.com/users/aakashkoirala17")
     .then(response => response.json())
     .then(function(data)
+
     {
         console.log(data)
+        document.getElementById('profileImage').src=data['avatar_url']
+        document.getElementById('profileName').textContent=data['name']
+        document.getElementById('bio').textContent=data['bio']
+        document.getElementById('githublink').href=data['html_url']
+
+    })
+    fetch("https://api.github.com/users/aakashkoirala17/repos")
+    .then(response=> response.json())
+    .then(function (data) {
+
+        console.log(data)
+
+
+
+
     })
 
 
