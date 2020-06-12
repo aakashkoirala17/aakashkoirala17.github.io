@@ -52,21 +52,8 @@ body{
         console.log(data)
     })
 
-        async function insertUrl(domElement){
-    
-      const data = await fetch('https://api.github.com/users/aakashkoirala17/repos?fbclid=IwAR29WpiLvsfOWjjG3ReSz45Q8wxFiaGBHohBFPCnjdEmXOeNzlZ4dcU61qI');
+     
 
-   const json  = await data.json();
-   let html = '<ul>'
-    for (let data of json)
-        html += `<li><a href="${data.html_url}"> ${data.html_url}</a> </li>`;
-    
-    html += '</ul>'
-
-    domElement.innerHTML = html;
-} 
-
-insertUrl(document.body);
 
 
 
