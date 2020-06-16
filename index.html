@@ -16,7 +16,7 @@
                 <a id="githublink"> GithubLink </a> <br>
 
 
-                <a id="html"> Lists </a>
+                <a id="reposlink" >  </a>
             </p>
 
 
@@ -24,6 +24,11 @@
 
             <a class="twitter-timeline" data-width="300" data-height="500" data-theme="dark" href="https://twitter.com/44_k45h?ref_src=twsrc%5Etfw">Tweets by 44_k45h</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
+
+
+
+
+
 
 <script>
 
@@ -39,16 +44,6 @@
         document.getElementById('githublink').href=data['html_url']
 
     })
-    fetch("https://api.github.com/users/aakashkoirala17/repos")
-    .then(response=> response.json())
-    .then(function (data) {
-
-        console.log(data)
-
-
-
-
-    })
 
      
 
@@ -56,6 +51,36 @@
 
 
 </script>
+
+    <script>
+
+
+        async function insertUrl(domElement){ // Using domElement as argument to pass the HTML element
+
+        //using fetch api to fetch data
+        //using await returns the data until the returned promise is resolved or rejected
+        //Assuming the promise is always resolved..
+
+            const data = await fetch('https://api.github.com/users/aakashkoirala17/repos?fbclid=IwAR29WpiLvsfOWjjG3ReSz45Q8wxFiaGBHohBFPCnjdEmXOeNzlZ4dcU61qI');
+
+
+            const json  = await data.json();  // Await until the promise is resolved
+
+            //creating the context to be inserted in HTML page
+            let html = '<ul>' //Create ul HTML element for unOrdered list
+
+            for (let data of json)
+                html += `<li><a href="${data.html_url}"> ${data.html_url}</a> </li>`; //Creating the list element in loop
+
+            html += '</ul>' //End the ul html element after loop is terminated.
+
+            domElement.innerHTML = html;   //Adding created html string to the passed domElement
+        }
+
+        insertUrl(document.querySelector('#reposlink'));  //Pass the element with id html to the created function
+
+
+    </script>
 
 </body>
 </html>
