@@ -61,7 +61,7 @@
         //using await returns the data until the returned promise is resolved or rejected
         //Assuming the promise is always resolved..
 
-            const data = await fetch('https://api.github.com/users/aakashkoirala17/repos?fbclid=IwAR29WpiLvsfOWjjG3ReSz45Q8wxFiaGBHohBFPCnjdEmXOeNzlZ4dcU61qI');
+            const data = await fetch('https://api.github.com/users/aakashkoirala17/repos');
 
 
             const json  = await data.json();  // Await until the promise is resolved
