@@ -41,6 +41,7 @@
         document.getElementById('profileImage').src=data['avatar_url']
         document.getElementById('profileName').textContent=data['name']
         document.getElementById('bio').textContent=data['bio']
+        document.getElementById('followers_url').href=data['html_url']
         document.getElementById('githublink').href=data['html_url']
 
     })
