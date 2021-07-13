@@ -64,7 +64,7 @@
 
             const data = await fetch('https://api.github.com/users/aakashkoirala17/repos');
 
-            const data = await fetch('https://api.github.com/users/aakashkoirala17/followers')
+            const data = await fetch('https://api.github.com/users/aakashkoirala17/followers');
 
 
             const json  = await data.json();  // Await until the promise is resolved
@@ -81,7 +81,7 @@
         }
 
         insertUrl(document.querySelector('#reposlink')); 
-        insertUrl(document.querySelector('#followersinfo')) //Pass the element with id html to the created function
+        insertUrl(document.querySelector('#followersinfo')); //Pass the element with id html to the created function
 
 
     </script>
