@@ -85,6 +85,38 @@
 
 
     </script>
+     <script>
+
+
+        async function insertUrl(domElement){ // Using domElement as argument to pass the HTML element
+
+        //using fetch api to fetch data
+        //using await returns the data until the returned promise is resolved or rejected
+        //Assuming the promise is always resolved..
+
+           
+
+            const data = await fetch('https://api.github.com/users/aakashkoirala17/followers');
+
+
+            const json  = await data.json();  // Await until the promise is resolved
+
+            //creating the context to be inserted in HTML page
+            let html = '<ul>' //Create ul HTML element for unOrdered list
+
+            for (let data of json)
+                html += `<li><a href="${data.followers_url}"> ${data.followers_url}</a> </li>`; //Creating the list element in loop
+
+            html += '</ul>' //End the ul html element after loop is terminated.
+
+            domElement.innerHTML = html;   //Adding created html string to the passed domElement
+        }
+
+        
+        insertUrl(document.querySelector('#followersinfo')); //Pass the element with id html to the created function
+
+
+    </script>
 
 </body>
 </html>
