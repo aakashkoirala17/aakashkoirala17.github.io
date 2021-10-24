@@ -1,123 +1,15 @@
-<html xmlns="http://www.w3.org/1999/html">
-<head>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-  <body>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-
-        <div class="main">
-            <img id="profileImage">
-            <h2 id="profileName">  </h2>
-            <h5 id="bio"></h5>
-            <p align = left><h2 align = left>My Followers</h2>   <h3 id="followersinfo" align= left>My Followers</h3>  </p>
-            
-            <p>
-               <h2> Check me out at</h2> <a id="githublink"> Github </a> </h2> 
-
-                <h2 align= left>My Projects</h2>
-                <a id="reposlink" align = left>  </a>
-            </p>
-
-
-
-
-            <a class="twitter-timeline" data-width="300" data-height="500" data-theme="dark" href="https://twitter.com/44_k45h?ref_src=twsrc%5Etfw">Tweets by 44_k45h</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
-
-
-
-
-
-
-<script>
-
-    fetch("https://api.github.com/users/aakashkoirala17")
-    .then(response => response.json())
-    .then(function(data)
-
-    {
-        console.log(data)
-        document.getElementById('profileImage').src=data['avatar_url']
-        document.getElementById('profileName').textContent=data['name']
-        document.getElementById('bio').textContent=data['bio']
-        document.getElementById('githublink').href=data['html_url']
-        document.getElementById('followersinfo').href=data['followers_url']
-
-    })
-
-     
-
-
-
-
-</script>
-
-    <script>
-
-
-        async function insertUrl(domElement){ // Using domElement as argument to pass the HTML element
-
-        //using fetch api to fetch data
-        //using await returns the data until the returned promise is resolved or rejected
-        //Assuming the promise is always resolved..
-
-            const data = await fetch('https://api.github.com/users/aakashkoirala17/repos');
-
-
-            const json  = await data.json();  // Await until the promise is resolved
-
-            //creating the context to be inserted in HTML page
-            let html = '<ul>' //Create ul HTML element for unOrdered list
-
-            for (let data of json)
-                html += `<li><a href="${data.html_url}"> ${data.html_url}</a> </li>`; //Creating the list element in loop
-
-            html += '</ul>' //End the ul html element after loop is terminated.
-
-            domElement.innerHTML = html;   //Adding created html string to the passed domElement
-        }
-
-        insertUrl(document.querySelector('#reposlink'));  //Pass the element with id html to the created function
-
-
-    </script>
-
-<script>
-
-
-    async function insertUrl(domElement){ // Using domElement as argument to pass the HTML element
-
-    //using fetch api to fetch data
-    //using await returns the data until the returned promise is resolved or rejected
-    //Assuming the promise is always resolved..
-
-       
-
-        const data = await fetch('https://api.github.com/users/aakashkoirala17/followers');
-
-
-        const json  = await data.json();  // Await until the promise is resolved
-
-        //creating the context to be inserted in HTML page
-        let html = '<ul>' //Create ul HTML element for unOrdered list
-
-        for (let data of json)
-            html += `<li><a href="${data.followers_url}"> ${data.followers_url}</a> </li>`; //Creating the list element in loop
-
-        html += '</ul>' //End the ul html element after loop is terminated.
-
-        domElement.innerHTML = html;   //Adding created html string to the passed domElement
-    }
-
+<html> 
+  <head> 
+    <title>Aakash Koirala</title> 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head> 
+  <body> 
+    <script type="text/javascript" src="index.js"> 
+    </script> 
+    <div id="console"></div> 
     
-    insertUrl(document.querySelector('#followersinfo')); //Pass the element with id html to the created function
-
-
-</script>
-
-
-<p align = center>Copyright © 2021 Aakash Koirala</p>
-</body>
-</html>
+    </script>
+  </body> 
+</html> 
