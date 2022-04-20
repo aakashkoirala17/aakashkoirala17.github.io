@@ -12,7 +12,7 @@ Hey There! This is my portfolio.<!-- laglaglaglaglaglaglaglaglaglaglaglag -->
 <p> My github profile<a href="https://github.com/aakashkoirala17/"> Github</a>.</p><!-- kjdhjhgdgldjhgdwtoiewotwotjdfkjdfffsf -->
 <br><br><br>
 <a href="Facebook.com/aakashkoirala17">Facebook</a> <br> 
-<a href="https://www.linkedin.com/in/aakash-koirala-208416177/">Linkdin</a> and <br> 
+<a href="https://www.linkedin.com/in/aakash-koirala-208416177/">LinkedIn</a> and <br> 
 <a href="link3">Twitter</a>.</p>
 
 <!-- slightdelayhere-->Feel free to send me an email at <!-- longlonglongcomment --><a href="aakashkoirala17@gmail.com">Here</a>.
