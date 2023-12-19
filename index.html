@@ -1,17 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Choice Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
 
-<html> 
-  <head> 
-    <title>Aakash Koirala</title> 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7024763770604052"
-     crossorigin="anonymous"></script>
-  </head> 
-  <body> 
-    <script type="text/javascript" src="index.js"> 
-    </script> 
-    <div id="console"></div> 
-    
-    </script>
-  </body> 
-</html> 
+    #container {
+      width: 80%;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    #quiz {
+      margin-top: 50px;
+    }
+
+    .question {
+      display: none;
+    }
+
+    .question.show {
+      display: block;
+    }
+
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    #prev, #next, #submit {
+      display: block;
+      width: 100px;
+      height: 30px;
+      margin: 20px auto;
+      background-color: #4CAF50;
+      color: #fff;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #prev:hover, #next:hover, #submit:hover {
+      background-color: #45a049;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Nepal Engineering Council Registration Examination MOCK Test</h1>
+	<h1>Model Question for Computer Engineering (ACtE)</h1>
+    <p>Time: 2 Hours</p>
+    <form id="quiz" action="#" method="POST">
+      <div id="timer">
+        Time left: <span id="minutes">120</span>:<span id="seconds">00</span>
+      </div>
+      <div id="sectionA" class="section show">
+        <h2>Section A (60*1 = 60)</h2>
+         <div class="question show">
+        <p>1.Decibel relation for power gain is:</p>
+        <label for="a1">A)   𝑁𝑑𝐵 = 20 𝑙𝑜𝑔10 (
+𝑉2/
+2
+𝑉1
+2) + 20 𝑙𝑜𝑔10 (
+𝑍1/𝑍2
+) </label>
+        <input type="radio" name="q1" id="a1" value="true">
+        <label for="b1">B) change in length = twice of original length</label>
+        <input type="radio" name="q1" id="b1" value="false">
+        <label for="c1">C)  final length = original length</label>
+        <input type="radio" name="q1" id="c1" value="false">
+        <label for="d1">D) final length = half of original length</label>
+        <input type="radio" name="q1" id="d1" value="false">
+      </div>
+      <div class="question">
+        <p>2. What is the largest animal in the world?</p>
+        <label for="a2">A) Elephant</label>
+        <input type="radio" name="q2" id="a2" value="false">
+        <label for="b2">B) Whale</label>
+        <input type="radio" name="q2" id="b2" value="true">
+        <label for="c2">C) Giraffe</label>
+        <input type="radio" name="q2" id="c2" value="false">
+        <label for="d2">D) Dinosaur</label>
+        <input type="radio" name="q2" id="d2" value="false">
+      </div>
+      <div class="question">
+        <p>3. What is the name of the largest bone in the human body?</p>
+        <label for="a3">A) Humerus</label>
+        <input type="radio" name="q3" id="a3" value="false">
+        <label for="b3">B) Femur</label>
+        <input type="radio" name="q3" id="b3" value="true">
+        <label for="c3">C) Tibia</label>
+        <input type="radio" name="q3" id="c3" value="false">
+        <label for="d3">D) Pelvis</label>
+        <input type="radio" name="q3" id="d3" value="false">
+      </div>
+      </div>
+      </div>
+      <div id="sectionB" class="section">
+        <h2>Section-B (20*2 = 40)</h2>
+        <!-- Section B questions go here -->
+      </div>
+      <button id="prev" type="button">Previous</button>
+      <button id="next" type="button">Next</button>
+      <button id="submit" type="submit">Submit</button>
+    </form>
+  </div>
+  <script>
+    var sections = document.getElementsByClassName('section');
+    var currentSection = 0;
+
+    // Show the first section
+    sections[currentSection].classList.add('show');
+
+    var questions = sections[currentSection].getElementsByClassName('question');
+    var currentQuestion = 0;
+    var questionsPerPage = 20;
+
+    // Show the first set of questions
+    for (var i = 0; i < questionsPerPage; i++) {
+      if (questions[i]) {
+        questions[i].classList.add('show');
+      }
+    }
+
+    document.getElementById('next').onclick = function() {
+      // Hide the current set of questions
+      for (var i = currentQuestion; i < currentQuestion + questionsPerPage; i++) {
+        if (questions[i]) {
+          questions[i].classList.remove('show');
+        }
+      }
+
+      // Move to the next set of questions
+      currentQuestion += questionsPerPage;
+
+      // If we've reached the end of the current section, move to the next section
+      if (currentQuestion >= questions.length) {
+        // Hide the current section
+        sections[currentSection].classList.remove('show');
+
+        // Move to the next section
+        currentSection = (currentSection + 1) % sections.length;
+
+        // Reset the current question to the start of the next section
+        currentQuestion = 0;
+
+        // Update the questions variable to the questions in the next section
+        questions = sections[currentSection].getElementsByClassName('question');
+      }
+
+      // Show the next set of questions
+      for (var i = currentQuestion; i < currentQuestion + questionsPerPage; i++) {
+        if (questions[i]) {
+          questions[i].classList.add('show');
+        }
+      }
+    };
+
+    document.getElementById('prev').onclick = function() {
+      // Hide the current set of questions
+      for (var i = currentQuestion; i < currentQuestion + questionsPerPage; i++) {
+        if (questions[i]) {
+          questions[i].classList.remove('show');
+        }
+      }
+
+      // Move to the previous set of questions
+      currentQuestion -= questionsPerPage;
+
+      // If we've reached the start of the current section, move to the previous section
+      if (currentQuestion < 0 && currentSection > 0) {
+        // Hide the current section
+        sections[currentSection].classList.remove('show');
+
+        // Move to the previous section
+        currentSection = (currentSection - 1) % sections.length;
+
+        // Reset the current question to the start of the previous section
+        currentQuestion = 0;
+
+        // Update the questions variable to the questions in the previous section
+        questions = sections[currentSection].getElementsByClassName('question');
+      }
+
+      // Show the previous set of questions
+      for (var i = currentQuestion; i < currentQuestion + questionsPerPage; i++) {
+        if (questions[i]) {
+          questions[i].classList.add('show');
+        }
+      }
+    };
+
+    var minutes = 120;
+    var seconds = 0;
+    var timer = document.getElementById('timer');
+
+    setInterval(function() {
+      if (seconds == 0) {
+        if (minutes == 0) {
+          alert('Time is up!');
+          document.getElementById('quiz').submit();
+        } else {
+          minutes--;
+          seconds = 59;
+        }
+      } else {
+        seconds--;
+      }
+
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+    }, 1000);
+
+    document.getElementById('submit').onclick = function() {
+      var score = 0;
+
+      // Calculate score for Section A
+      var questionsA = document.getElementById('sectionA').getElementsByClassName('question');
+      for (var i = 0; i < questionsA.length; i++) {
+        var radios = questionsA[i].getElementsByTagName('input');
+        for (var j = 0; j < radios.length; j++) {
+          if (radios[j].checked && radios[j].value == 'true') {
+            score += 1;  // Each correct answer in Section A is worth 1 mark
+            break;
+          }
+        }
+      }
+
+      // Calculate score for Section B
+      var questionsB = document.getElementById('sectionB').getElementsByClassName('question');
+      for (var i = 0; i < questionsB.length; i++) {
+        var radios = questionsB[i].getElementsByTagName('input');
+        for (var j = 0; j < radios.length; j++) {
+          if (radios[j].checked && radios[j].value == 'true') {
+            score += 2;  // Each correct answer in Section B is worth 2 marks
+            break;
+          }
+        }
+      }
+
+      // Check if the user passed or failed
+      if (score >= 50) {
+        alert('Congratulations, you passed! Your score is ' + score + '.');
+      } else {
+        alert('Sorry, you failed. Your score is ' + score + '.');
+      }
+    };
+  </script>
+</body>
+</html>
