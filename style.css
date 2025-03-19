@@ -18,6 +18,9 @@ body {
     overflow-y: auto;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .bot-message, .user-message {

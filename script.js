@@ -1,6 +1,6 @@
 const responses = {
-    "hello": "Hi there! Ask me anything about Aakash's CV. 😊",
-    "who are you": "I am Aakash's personal chatbot, here to provide CV details!",
+    "hello": "Hi there! 😊 Ask me anything about Aakash's CV.",
+    "who are you": "I am Aakash's personal assistant, here to provide CV details!",
     "what is your name": "My name is Aakash Koirala.",
     "tell me about yourself": "Aakash Koirala is a Lab Instructor with a Bachelor's in Computer Engineering, skilled in hands-on learning and technical training.",
     "education": "Aakash completed his Bachelor's in Computer Engineering from Himalaya College of Engineering (2016 - 2021).",
@@ -14,6 +14,7 @@ const responses = {
     "bye": "Goodbye! Have a great day. 😊"
 };
 
+// Function to send user message
 function sendMessage() {
     let inputField = document.getElementById("user-input");
     let userText = inputField.value.trim().toLowerCase();
@@ -29,6 +30,7 @@ function sendMessage() {
     inputField.value = "";
 }
 
+// Function to add messages to the chat box
 function addMessage(text, className) {
     let chatBox = document.getElementById("chat-box");
     let messageDiv = document.createElement("div");
@@ -38,8 +40,16 @@ function addMessage(text, className) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
+// Function to handle "Enter" key press
 function handleKeyPress(event) {
     if (event.key === "Enter") {
         sendMessage();
     }
 }
+
+// **Pre-Messenger Feature**
+window.onload = function() {
+    setTimeout(() => {
+        addMessage("Hello! 👋 I am Aakash's personal assistant. You can ask about his CV, skills, projects, or contact details.", "bot-message");
+    }, 1000);
+};
